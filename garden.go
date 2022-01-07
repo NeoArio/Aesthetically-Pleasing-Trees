@@ -2,7 +2,7 @@ package main
 
 type Garden []int
 
-func (g Garden) SolveBySecondSolution() int{
+func (g Garden) SolveByFirstSolution() int{
 	var UpOrDowns []int
 
 	for i:=0; i < len(g)-2; i++{
@@ -49,7 +49,7 @@ func (g Garden) SolveBySecondSolution() int{
 	return maxWays
 }
 
-func (g Garden) SolveByFirstSolution() int {
+func (g Garden) SolveBySecondSolution() int {
 	var waysToCut int
 	if g.IsAesthetic() {
 		return 0

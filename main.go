@@ -17,16 +17,14 @@ func main(){
 
 	start := time.Now()
 	answer := garden.SolveByFirstSolution()
-	log.Printf("First solution answer: %v", answer)
-
 	elapsed := time.Since(start)
+	log.Printf("First solution answer: %v", answer)
 	log.Printf("First solution execution time: %v", elapsed)
 
 	start = time.Now()
 	answer = garden.SolveBySecondSolution()
-	log.Printf("Second solution answer: %v", answer)
-
 	elapsed = time.Since(start)
+	log.Printf("Second solution answer: %v", answer)
 	log.Printf("Second solution execution time: %v", elapsed)
 }
 
