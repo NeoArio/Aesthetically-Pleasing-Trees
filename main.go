@@ -8,7 +8,6 @@ import (
 )
 
 func main(){
-	start := time.Now()
 	var garden Garden
 
 	err := json.Unmarshal([]byte(os.Args[1]), &garden)
@@ -16,12 +15,19 @@ func main(){
 		log.Fatal("incorrect input. Please try again and get help from README")
 	}
 
-	answer := garden.Solve()
-	log.Printf("answer: %v", answer)
+	start := time.Now()
+	answer := garden.SolveByFirstSolution()
+	log.Printf("First solution answer: %v", answer)
 
 	elapsed := time.Since(start)
-	log.Printf("Execution time: %v", elapsed)
+	log.Printf("First solution execution time: %v", elapsed)
 
+	start = time.Now()
+	answer = garden.SolveBySecondSolution()
+	log.Printf("Second solution answer: %v", answer)
+
+	elapsed = time.Since(start)
+	log.Printf("Second solution execution time: %v", elapsed)
 }
 
 

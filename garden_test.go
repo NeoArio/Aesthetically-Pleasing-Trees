@@ -14,17 +14,7 @@ func TestGardens(t *testing.T) {
 	}{
 		{
 			name: "Already aesthetically pleasing garden without removal",
-			Garden: Garden{2, 8},
-			want: 0,
-		},
-		{
-			name: "Already aesthetically pleasing garden without removal",
-			Garden: Garden{8, 2},
-			want: 0,
-		},
-		{
-			name: "Already aesthetically pleasing garden without removal",
-			Garden: Garden{2, 8, 5, 7},
+			Garden: Garden{1, 3, 1, 2},
 			want: 0,
 		},
 		{
@@ -34,7 +24,7 @@ func TestGardens(t *testing.T) {
 		},
 		{
 			name: "Many ways to solve the problem",
-			Garden: Garden{1, 6, 7, 3, 9},
+			Garden: Garden{3, 4, 5, 3, 7},
 			want: 3,
 		},
 		{
@@ -53,11 +43,22 @@ func TestGardens(t *testing.T) {
 	for i, tt := range tests {
 		start := time.Now()
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.Garden.Solve(); got != tt.want {
+			if got := tt.Garden.SolveByFirstSolution(); got != tt.want {
 				t.Errorf("Answer = %v, Want %v", got, tt.want)
 			}
 		})
 		elapsed := time.Since(start)
-		log.Printf("Test %v\ninput:\n\t%v\nExecution time: %v",i,tt.Garden,elapsed)
+		log.Printf("First Solution Test %v\ninput:\n\t%v\nExecution time: %v",i,tt.Garden,elapsed)
+	}
+
+	for i, tt := range tests {
+		start := time.Now()
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.Garden.SolveBySecondSolution(); got != tt.want {
+				t.Errorf("Answer = %v, Want %v", got, tt.want)
+			}
+		})
+		elapsed := time.Since(start)
+		log.Printf("Second Solution Test %v\ninput:\n\t%v\nExecution time: %v",i,tt.Garden,elapsed)
 	}
 }
